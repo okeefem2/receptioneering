@@ -1,0 +1,98 @@
+@import 'scss/variables';
+
+* { box-sizing: border-box; margin: 0; padding: 0; border: 0; }
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body { height: 100%; }
+
+main {
+    scroll-behavior: smooth !important;
+    height: 150vh;
+    max-height: 100%;
+    overflow-x: hidden;
+    perspective: 1px;
+    perspective-origin: center top;
+    transform-style: preserve-3d;
+    font-family: 'Luna';
+    background-color: $background-color;
+}
+
+header {
+    padding-top: 20vh;
+    color: #fff;
+    height: 100vh;
+    width: 100vw;
+    background: url('./yosemite.png');
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    vertical-align: top;
+    transform-origin: center top;
+    transform:
+        translateZ(-1px)
+        scale(2);
+
+    & * {
+        font-weight: normal;
+        letter-spacing: 0.2em;
+        text-align: center;
+        margin: 0;
+        padding: 1em 0;
+    }
+
+}
+
+.rsvp-button {
+    color: #fff;
+    padding: 1em;
+    border-radius: 0;
+    background: none;
+    border: 2px solid $primary-color;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    font-size: 1rem;
+    transition: all .2s;
+    text-decoration: none;
+
+    &:hover {
+        background: $primary-color;
+        color: white;
+
+        transform: translateY(-0.3rem);
+        /* offset x offset y blur and color, higher blur makes it look higher off the page */
+        box-shadow: 0 1rem 2rem rgba($primary-color, 0.2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+}
+
+section#rsvp {
+    min-height: 200vh;
+    transform: translateZ(0);
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// https://dev.to/selbekk/how-to-fade-in-content-as-it-scrolls-into-view-10j4
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20vh);
+    visibility: hidden;
+    transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+    will-change: opacity, visibility;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+}
