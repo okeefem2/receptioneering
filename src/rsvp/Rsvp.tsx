@@ -5,7 +5,7 @@ import './Rsvp.scss';
 export const Rsvp: React.FC = observer(() => {
     return (
         <section id="rsvp">
-            <h4>Enter Name To RSVP</h4>
+            <h2>Enter Name On Invitation To RSVP</h2>
             <form>
                 <div className="input-field">
                     <input id="name" type="text" name="name" autoComplete="off" />
