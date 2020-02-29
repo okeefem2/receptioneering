@@ -4,7 +4,7 @@ import './Rsvp.scss';
 
 export const Rsvp: React.FC = observer(() => {
     return (
-        <section id="rsvp">
+        <div className="col">
             <h2>Enter Name On Invitation To RSVP</h2>
             <form>
                 <div className="input-field">
@@ -19,7 +19,7 @@ export const Rsvp: React.FC = observer(() => {
                     <label>Email</label>
                 </div>
             </form>
-        </section>
+        </div>
     );
 });
 

@@ -18,7 +18,7 @@ main {
     transform-style: preserve-3d;
     font-family: 'Luna';
     background-color: $color-background-dark;
-    color: $color-white;
+    color: $color-text-darker;
     letter-spacing: 0.15em;
 }
 
@@ -46,6 +46,11 @@ header {
         text-align: center;
         margin: 0;
         padding: 1em 0;
+        color: $color-white;
+    }
+
+    p {
+        color: $color-white;
     }
 
 }
@@ -85,12 +90,26 @@ header {
     visibility: hidden;
     transition: opacity 0.6s ease-out, transform 1.2s ease-out;
     will-change: opacity, visibility;
+
+    &--right {
+        transform: translateX(20vw);
+    }
+
+    &--left {
+        transform: translateX(-20vw);
+    }
+    width: 50%;
+
+    &--full {
+        width: 100%;
+    }
 }
 
 .fade-in-section.is-visible {
     opacity: 1;
     transform: none;
     visibility: visible;
+
 }
 
 div#root {
@@ -101,10 +120,20 @@ div#root {
     section {
         min-height: 50vh;
         padding: 10px 0;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .col {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        margin-top: 50px;
+        padding: 10px;
+
+        &--spaced {
+            justify-content: space-between;
+        }
     }
 }

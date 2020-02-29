@@ -1,0 +1,16 @@
+@import '../scss/variables';
+
+p {
+    text-align: center;
+    color: $color-text-darker;
+}
+
+.title {
+    font-size: 1em;
+}
+
+.subtitle {
+    font-size: 0.7em;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
