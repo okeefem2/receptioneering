@@ -1,4 +1,9 @@
 @import '../scss/variables';
+@import '../scss/mixins';
+
+$trans-time: 300ms;
+$form-width: 420px;
+$form-width-phone: 260px;
 
 h4 {
     font-weight: normal;
@@ -22,7 +27,11 @@ form {
         border: none;
         border-radius: 0;
         border-bottom: 1px solid $color-text-darker;
-        width: $width;
+        width: $form-width;
+
+        @include respond(phone) {
+            width: $form-width-phone;
+        }
 
         &:focus {
             outline: none;
@@ -33,7 +42,10 @@ form {
             color: $color-primary;
         }
         &:focus ~ .bar:before {
-            width: $width;
+            width: $form-width;
+            @include respond(phone) {
+                width: $form-width-phone;
+            }
         }
     }
 
@@ -51,7 +63,10 @@ form {
     .bar {
         position: relative;
         display: block;
-        width: $width;
+        width: $form-width;
+        @include respond(phone) {
+            width: $form-width-phone;
+        }
         &:before {
           content: '';
           height: 2px;
