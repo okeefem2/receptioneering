@@ -9,7 +9,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         node-version: [12.x]
@@ -25,4 +25,4 @@ jobs:
     - name: Build
       run: npm run build
     - name: Deploy Hosting
-      run: npm run deploy-hosting:ci
+      run: npx --package firebase-tools firebase deploy --token \"${{ secrets.FIREBASE_TOKEN }}\" --only hosting
