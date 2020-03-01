@@ -12,3 +12,5 @@ Setting up ES lint <https://dev.to/benweiser/how-to-set-up-eslint-typescript-pre
 Setting up secrets on GH <https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets>
 
 firebase login:ci to generate ci token
+
+caching npm dependencies <https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows>
