@@ -11,7 +11,6 @@ html, body { height: 100%; }
 
 main {
     scroll-behavior: smooth !important;
-    height: 150vh;
     max-height: 100%;
     overflow-x: hidden;
     perspective: 1px;
@@ -24,10 +23,11 @@ main {
 }
 
 header {
-    padding-top: 20vh;
+    padding-top: 10vh;
     color: $color-white;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     background: url('./yosemite.png');
     background-size: cover;
     background-position: center center;
@@ -37,6 +37,12 @@ header {
     transform:
         translateZ(-1px)
         scale(2);
+
+    @include respond(small-phone) {
+        transform:
+        translateZ(-1px)
+        scale(1);
+    }
 
     h1 {
         letter-spacing: 0.2em;
