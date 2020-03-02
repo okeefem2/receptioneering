@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { observer } from 'mobx-react';
 import { ListItem } from '../menu/Menu';
 import { ItemList } from '../menu/MenuItemList';
@@ -48,11 +48,7 @@ export const Schedule: React.FC = observer(() => {
             <div className="col">
                 <h2>Schedule</h2>
             </div>
-            <div className="col">
-                {
-                    <ItemList listItems={schedule} />
-                }
-            </div>
+            <div className="col">{<ItemList listItems={schedule} />}</div>
         </>
     );
 });

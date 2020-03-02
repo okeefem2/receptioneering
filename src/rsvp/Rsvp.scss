@@ -9,73 +9,74 @@ h4 {
     font-weight: normal;
 }
 
-
 form {
     text-align: center;
 }
 
 .input-field {
-    position: relative;
     margin: 45px 0;
+    position: relative;
+}
 
-    input {
-        background: none;
-        color: $color-text-darker;
-        font-size: 18px;
-        padding: 10px 10px 10px 5px;
-        display: block;
-        border: none;
-        border-radius: 0;
-        border-bottom: 1px solid $color-text-darker;
+input {
+    background: none;
+    border-bottom: 1px solid $color-text-darker;
+    border-radius: 0;
+    color: $color-text-darker;
+    display: block;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    width: $form-width;
+
+    @include respond(phone) {
+        width: $form-width-phone;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:focus ~ label {
+        color: $color-primary;
+        font-size: 12px;
+        top: -14px;
+    }
+
+    &:focus ~ .bar::before {
         width: $form-width;
-
         @include respond(phone) {
             width: $form-width-phone;
         }
+    }
+}
 
-        &:focus {
-            outline: none;
-        }
-        &:focus ~ label {
-            top: -14px;
-            font-size: 12px;
-            color: $color-primary;
-        }
-        &:focus ~ .bar:before {
-            width: $form-width;
-            @include respond(phone) {
-                width: $form-width-phone;
-            }
-        }
+label {
+    color: $color-text-darker;
+    font-size: 16px;
+    font-weight: normal;
+    left: 5px;
+    pointer-events: none;
+    position: absolute;
+    top: 10px;
+    transition: $trans-time ease all;
+}
+
+.bar {
+    display: block;
+    position: relative;
+    width: $form-width;
+    @include respond(phone) {
+        width: $form-width-phone;
     }
 
-    label {
-        color: $color-text-darker;
-        font-size: 16px;
-        font-weight: normal;
+    &::before {
+        background: $color-primary;
+        bottom: 0;
+        content: '';
+        height: 2px;
+        left: 0%;
         position: absolute;
-        pointer-events: none;
-        left: 5px;
-        top: 10px;
         transition: $trans-time ease all;
+        width: 0;
     }
-
-    .bar {
-        position: relative;
-        display: block;
-        width: $form-width;
-        @include respond(phone) {
-            width: $form-width-phone;
-        }
-        &:before {
-          content: '';
-          height: 2px;
-          width: 0;
-          bottom: 0px;
-          position: absolute;
-          background: $color-primary;
-          transition: $trans-time ease all;
-          left: 0%;
-        }
-      }
 }

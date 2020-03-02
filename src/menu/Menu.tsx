@@ -1,15 +1,18 @@
-import React from 'react'
+import React from 'react';
 import { observer } from 'mobx-react';
 import './Menu.scss';
 import { ItemList } from './MenuItemList';
 
 export interface List {
-    [k: string]: ListItem[]
+    [k: string]: ListItem[];
 }
 
-export interface ListItem { title: string, subtitle: string }
+export interface ListItem {
+    title: string;
+    subtitle: string;
+}
 const menu: List = {
-    'Appetizers': [
+    Appetizers: [
         {
             title: 'Beer-Brined Chicken Wings',
             subtitle: `Plain, BBQ, Buffalo and Dry Rub. Served with ranch and blue cheese, feel free to bring a favorite sauce!`,
@@ -35,7 +38,7 @@ const menu: List = {
             subtitle: `With pickled vegetables, pita bread, and olive oil.`,
         },
     ],
-    'Salads': [
+    Salads: [
         {
             title: 'Caesar Salad',
             subtitle: `Romaine with croutons and Parmesan.`,
@@ -75,30 +78,30 @@ const menu: List = {
             subtitle: `With roasted chicken, peppadew peppers, red onion, jalapenos, and Dragon's Milk BBQ sauce.`,
         },
     ],
-    'Desert': [
+    Desert: [
         {
             title: 'Donuts',
             subtitle: `Plain, Sour Cream, Sprinkle, Jelly filled, Cream filled`,
         },
     ],
-    'Beverages': [
+    Beverages: [
         {
             title: 'Bud Light',
-            subtitle: '2 30 packs of bud light cans'
+            subtitle: '2 30 packs of bud light cans',
         },
         {
             title: 'Oberon',
-            subtitle: '2 mini kegs of Oberon from Bell\'s'
+            subtitle: `2 mini kegs of Oberon from Bell's`,
         },
         {
             title: 'Wine',
-            subtitle: '3 bottles each of red and white wine'
+            subtitle: '3 bottles each of red and white wine',
         },
         {
             title: 'Mixed',
-            subtitle: 'Some cool mixed drinks'
+            subtitle: 'Some cool mixed drinks',
         },
-    ]
+    ],
 };
 
 export const Menu: React.FC = observer(() => {
@@ -108,16 +111,12 @@ export const Menu: React.FC = observer(() => {
                 <h2>Menu, Catered by New Holland Brewing</h2>
             </div>
             <div className="col">
-                {
-                    Object.keys(menu).map((category: string) => (
-                        <>
-                            <h3 className="category">
-                                {category}
-                            </h3>
-                            <ItemList listItems={menu[category]} />
-                        </>
-                    ))
-                }
+                {Object.keys(menu).map((category: string) => (
+                    <div key={category}>
+                        <h3 className="category">{category}</h3>
+                        <ItemList listItems={menu[category]} />
+                    </div>
+                ))}
             </div>
         </>
     );

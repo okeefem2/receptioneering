@@ -1,31 +1,39 @@
-import React from 'react'
+import React from 'react';
 import { observer } from 'mobx-react';
 import './Location.scss';
 
 export const Location: React.FC = observer(() => {
-    const mapUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDf-79O8qJv6hra1nrSIPJrty1eijP8r48&q=2474 Sunset Bluff Dr, Holland, MI 49424';
+    const mapUrl =
+        'https://www.google.com/maps/embed/v1/place?key=AIzaSyDf-79O8qJv6hra1nrSIPJrty1eijP8r48&q=2474 Sunset Bluff Dr, Holland, MI 49424';
     return (
         <>
             <div className="col">
                 <h2>Location</h2>
                 <p>
-                    This is an <strong>OUTDOOR</strong> reception at the beautiful home of Dan and Mary O'Keefe in Holland Michigan overlooking Lake Michigan. We will have a large tent on site that will accommodate all of us in the event of inclement weather.
+                    This is an <strong>OUTDOOR</strong> reception at the
+                    beautiful home of Dan and Mary O&#39;Keefe in Holland
+                    Michigan overlooking Lake Michigan. We will have a large
+                    tent on site that will accommodate all of us in the event of
+                    weather.
+                </p>
+                <p>2474 Sunset Bluff Dr, Holland, MI 49424</p>
+                <p>
+                    Parking will be on the hill leading up to the house on
+                    Sunset Bluff Dr, the earlier you are the closer you will be!
+                    If you are less mobile you can drive directly into the
+                    driveway and we can valet your car for you.
                 </p>
                 <p>
-                    2474 Sunset Bluff Dr, Holland, MI 49424
-                </p>
-                <p>
-                    Parking will be on the hill leading up to the house on Sunset Bluff Dr, the earlier you are the closer you will be! If you are less mobile you can drive directly into the driveway and we can valet your car for you.
-                </p>
-                <p>
-                    If you are wanting to stay the night in town, there are hotels in the area. Please feel free to reach out to us if you need help setting something up.
+                    If you are wanting to stay the night in town, there are
+                    hotels in the area. Please feel free to reach out to us if
+                    you need help setting something up.
                 </p>
                 <iframe
                     title="location"
                     width="700"
                     height="500"
-                    src={mapUrl}>
-                </iframe>
+                    src={mapUrl}
+                ></iframe>
             </div>
         </>
     );

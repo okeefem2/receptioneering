@@ -1,8 +1,8 @@
 @import '../scss/variables';
 
 p {
-    text-align: center;
     color: $color-text-darker;
+    text-align: center;
 }
 
 .title {
@@ -11,6 +11,5 @@ p {
 
 .subtitle {
     font-size: 0.7em;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 20px;
 }
