@@ -1,59 +1,63 @@
 @import 'scss/variables';
 @import 'scss/mixins';
 
-* { box-sizing: border-box; margin: 0; padding: 0; border: 0; }
+* {
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 html {
     scroll-behavior: smooth;
 }
 
-html, body { height: 100%; }
+html,
+body { height: 100%; }
 
 main {
-    scroll-behavior: smooth !important;
+    background-color: $color-background-dark;
+    color: $color-text-darker;
+    font-family: 'Luna';
+    letter-spacing: 0.15em;
     max-height: 100%;
     overflow-x: hidden;
     perspective: 1px;
     perspective-origin: center top;
+    scroll-behavior: smooth !important;
     transform-style: preserve-3d;
-    font-family: 'Luna';
-    background-color: $color-background-dark;
-    color: $color-text-darker;
-    letter-spacing: 0.15em;
 }
 
 header {
-    padding-top: 10vh;
+    background: url('./yosemite.png');
+    background-position: center center;
+    background-size: cover;
     color: $color-white;
     height: 100vh;
-    width: 100%;
     max-width: 100%;
-    background: url('./yosemite.png');
-    background-size: cover;
-    background-position: center center;
+    padding-top: 10vh;
     position: relative;
-    vertical-align: top;
-    transform-origin: center top;
     transform:
         translateZ(-1px)
         scale(2);
+    transform-origin: center top;
+    vertical-align: top;
+    width: 100%;
 
     @include respond(small-phone) {
-        transform:
-        translateZ(-1px)
-        scale(1);
+        transform: translateZ(-1px) scale(1);
     }
 
     h1 {
         letter-spacing: 0.2em;
     }
 
-    & * {
+    * {
+        color: $color-white;
         font-weight: normal;
-        text-align: center;
         margin: 0;
         padding: 1em 0;
-        color: $color-white;
+        text-align: center;
     }
 
     p {
