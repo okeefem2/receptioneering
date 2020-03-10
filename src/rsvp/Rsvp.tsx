@@ -1,32 +1,47 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { observer } from 'mobx-react';
 import './Rsvp.scss';
+import { invitationContext } from '../invitation/invitation.store';
 
 export const Rsvp: React.FC = observer(() => {
+    const { invitation } = useContext(invitationContext);
+
     return (
         <div className="col">
-            <h2>Enter Name On Invitation To RSVP</h2>
+            <h2>Rsvp Details</h2>
             <form>
-                <div className="input-field">
+                <div>
                     <input
-                        id="name"
-                        type="text"
-                        name="name"
-                        autoComplete="off"
+                        id="yes"
+                        type="radio"
+                        name="yes"
+                        value="true"
+                        checked={
+                            invitation?.rsvp || invitation?.rsvp === undefined
+                        }
                     />
-                    <span className="bar"></span>
-                    <label>Name</label>
+                    <label htmlFor="yes">We will be there!</label>
                 </div>
-                <span>Or</span>
+                <div>
+                    <input
+                        id="no"
+                        type="radio"
+                        name="no"
+                        value="false"
+                        checked={invitation?.rsvp === false}
+                    />
+                    <label htmlFor="no">Sorry, not going to make it</label>
+                </div>
                 <div className="input-field">
                     <input
-                        id="email"
-                        type="email"
+                        id="notes"
+                        type="text"
                         name="email"
                         autoComplete="off"
+                        value={invitation?.notes}
                     />
                     <span className="bar"></span>
-                    <label>Email</label>
+                    <label>Notes</label>
                 </div>
             </form>
         </div>

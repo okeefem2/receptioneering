@@ -1,10 +1,10 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import './Location.scss';
+import { GOOGLE_MAPS_API_KEY } from '../config/config';
 
 export const Location: React.FC = observer(() => {
-    const mapUrl =
-        'https://www.google.com/maps/embed/v1/place?key=AIzaSyDf-79O8qJv6hra1nrSIPJrty1eijP8r48&q=2474 Sunset Bluff Dr, Holland, MI 49424';
+    const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=2474 Sunset Bluff Dr, Holland, MI 49424`;
     return (
         <>
             <div className="col">

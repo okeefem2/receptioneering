@@ -67,7 +67,7 @@ header {
 
 }
 
-.rsvp-button {
+.button {
     background: none;
     border: 2px solid $color-primary;
     border-radius: 0;
@@ -83,6 +83,10 @@ header {
         box-shadow: 0 1rem 2rem rgba($color-primary, 0.2);
         color: $color-white;
         transform: translateY(-0.3rem);
+    }
+
+    &--black-text {
+        color: $color-black;
     }
 }
 
@@ -149,4 +153,9 @@ section {
 
 h2 {
     text-align: center;
+}
+
+.error {
+    color: $color-error;
+    margin-bottom: 20px;
 }
