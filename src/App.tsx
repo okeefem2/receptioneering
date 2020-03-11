@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './App.scss';
-import { Invitation } from './invitation/Invitation';
+import InvitationForm from './invitation/Invitation';
 import { FadeInSection } from './fade-in-section/FadeInSection';
 import { Menu } from './menu/Menu';
 import { Location } from './location/Location';
@@ -17,7 +17,7 @@ import { Location } from './location/Location';
 import Schedule from './schedule/Schedule';
 import { observer } from 'mobx-react';
 import { invitationContext } from './invitation/invitation.store';
-import Rsvp from './rsvp/Rsvp';
+import RsvpForm from './rsvp/Rsvp';
 
 export const App: React.FC = observer(() => {
     console.log('rendering app');
@@ -27,7 +27,7 @@ export const App: React.FC = observer(() => {
         <>
             <section id="rsvp">
                 <FadeInSection>
-                    {hasInvitation ? <Rsvp /> : <Invitation />}
+                    {hasInvitation ? <RsvpForm /> : <InvitationForm />}
                 </FadeInSection>
                 <FadeInSection fadeInDirection="right">
                     <div className="col">

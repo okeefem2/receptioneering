@@ -1,28 +1,23 @@
 import { createContext } from 'react';
 import { firebaseStore } from '../firebase/firebase.store';
 import { observable, action, computed, reaction } from 'mobx';
-import { collectionData, docData } from 'rxfire/firestore';
+import { collectionChanges, doc } from 'rxfire/firestore';
 import { take } from 'rxjs/operators';
-
-interface Invitation {
-    id: string;
-    names: string[];
-    emails: string[];
-    notes: string;
-    rsvp: boolean;
-}
+import { Invitation } from './invitation.model';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 class InvitationStore {
     private readonly INVITATIONS_COLLECTION = 'invitations';
 
-    @observable invitation: Invitation | undefined;
-    @observable errorMessage: string | undefined;
+    @observable invitation!: Invitation;
+    @observable errorMessage!: string;
 
     @computed get hasInvitation(): boolean {
         return !!this.invitation;
     }
 
     @computed get rsvp(): boolean {
-        return !!this.invitation && this.invitation.rsvp;
+        return !!this.invitation && this.invitation.rsvp === 'yes';
     }
 
     constructor() {
@@ -44,7 +39,6 @@ class InvitationStore {
         const savedInvitation = window.localStorage.getItem('invitation');
         console.log('from localstorage', savedInvitation);
         if (savedInvitation) {
-            debugger;
             const { id } = JSON.parse(savedInvitation);
             if (id) {
                 // fetch from firestore
@@ -58,10 +52,13 @@ class InvitationStore {
         const invitationRef = firebaseStore.firestore
             .collection(this.INVITATIONS_COLLECTION)
             .doc(id);
-        docData<Invitation>(invitationRef)
+        doc(invitationRef)
             .pipe(take(1))
-            .subscribe(invitation => {
-                this.setInvitation(invitation);
+            .subscribe(snapshot => {
+                this.setInvitation({
+                    ...(snapshot.data() as Invitation),
+                    id: snapshot.id,
+                });
             });
     };
 
@@ -82,11 +79,15 @@ class InvitationStore {
         );
 
         // TODO sub teardown
-        collectionData<Invitation>(invitationsQueryRef, 'id').subscribe(
+        collectionChanges(invitationsQueryRef).subscribe(
             invitations => {
                 console.log(invitations);
                 if (invitations && invitations.length) {
-                    this.setInvitation(invitations[0]);
+                    const invitation = invitations[0].doc;
+                    this.setInvitation({
+                        ...(invitation.data() as Invitation),
+                        id: invitation.id,
+                    });
                 } else {
                     this.setErrorMessage('No invitation found');
                 }

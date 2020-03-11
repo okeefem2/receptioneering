@@ -1,21 +1,15 @@
-import React, { useState, useContext, ChangeEvent, FormEvent } from 'react';
+import React, { useContext, FormEvent } from 'react';
 import { observer } from 'mobx-react';
 import './Invitation.scss';
 import { invitationContext } from './invitation.store';
+import { useFormState } from '../form/form-state';
 
-export const Invitation: React.FC = observer(() => {
-    const { invitation, checkInvitation, errorMessage } = useContext(
-        invitationContext
-    );
-    const [formValue, setFormValue] = useState<any>(invitation);
-
-    const handleInputChange = ({
-        target,
-    }: ChangeEvent<HTMLInputElement>): void => {
-        if (target?.name) {
-            setFormValue({ ...formValue, [target.name]: target.value });
-        }
-    };
+export const InvitationForm: React.FC = observer(() => {
+    const { checkInvitation, errorMessage } = useContext(invitationContext);
+    const [formValue, handleInputChange] = useFormState<{
+        name?: string;
+        email?: string;
+    }>({});
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
@@ -36,7 +30,7 @@ export const Invitation: React.FC = observer(() => {
                         onChange={handleInputChange}
                     />
                     <span className="bar"></span>
-                    <label>Name</label>
+                    <label className={'input-label'}>Name</label>
                 </div>
                 <span>Or</span>
                 <div className="input-field">
@@ -49,7 +43,7 @@ export const Invitation: React.FC = observer(() => {
                         onChange={handleInputChange}
                     />
                     <span className="bar"></span>
-                    <label>Email</label>
+                    <label className={'input-label'}>Email</label>
                 </div>
                 {errorMessage && (
                     <div>
@@ -64,4 +58,4 @@ export const Invitation: React.FC = observer(() => {
     );
 });
 
-export default Invitation;
+export default InvitationForm;
