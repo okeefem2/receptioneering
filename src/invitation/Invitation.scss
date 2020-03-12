@@ -1,0 +1,85 @@
+@import '../scss/variables';
+@import '../scss/mixins';
+
+$trans-time: 300ms;
+$form-width: 420px;
+$form-width-phone: 260px;
+
+h4 {
+    font-weight: normal;
+}
+
+form {
+    text-align: center;
+}
+
+.input-field {
+    margin: 45px 0;
+    position: relative;
+
+    input {
+        background: none;
+        border-bottom: 1px solid $color-text-darker;
+        border-radius: 0;
+        color: $color-text-darker;
+        display: block;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        width: $form-width;
+
+        @include respond(phone) {
+            width: $form-width-phone;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:focus ~ .input-label,
+        &.has-value ~ .input-label {
+            color: $color-primary;
+            font-size: 12px;
+            top: -14px;
+        }
+
+        &:focus ~ .bar::before,
+        &.has-value ~ .bar::before {
+            width: $form-width;
+            @include respond(phone) {
+                width: $form-width-phone;
+            }
+        }
+    }
+}
+
+
+.input-label {
+    color: $color-text-darker;
+    font-size: 16px;
+    font-weight: normal;
+    left: 5px;
+    pointer-events: none;
+    position: absolute;
+    top: 10px;
+    transition: $trans-time ease all;
+}
+
+.bar {
+    display: block;
+    position: relative;
+    width: $form-width;
+    @include respond(phone) {
+        width: $form-width-phone;
+    }
+
+    &::before {
+        background: $color-primary;
+        bottom: 0;
+        content: '';
+        height: 2px;
+        left: 0%;
+        position: absolute;
+        transition: $trans-time ease all;
+        width: 0;
+    }
+}

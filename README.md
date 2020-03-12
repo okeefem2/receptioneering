@@ -14,3 +14,5 @@ Setting up secrets on GH <https://help.github.com/en/actions/configuring-and-man
 firebase login:ci to generate ci token
 
 caching npm dependencies <https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows>
+
+yarn add rxfire firebase rxjs
