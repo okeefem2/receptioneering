@@ -18,11 +18,16 @@ import Schedule from './schedule/Schedule';
 import { observer } from 'mobx-react';
 import { invitationContext } from './invitation/invitation.store';
 import RsvpForm from './rsvp/Rsvp';
+import { imageContext } from './image/image.store';
 
 export const App: React.FC = observer(() => {
     console.log('rendering app');
     // Should move this checking down a level?
     const { hasInvitation, rsvp } = useContext(invitationContext);
+    const { images } = useContext(imageContext);
+    const buildImage = (section: string, className?: string) => (
+        url: string
+    ) => <img src={url} alt={section} className={className} key={url}></img>;
     return (
         <>
             <section id="rsvp">
@@ -31,7 +36,7 @@ export const App: React.FC = observer(() => {
                 </FadeInSection>
                 <FadeInSection fadeInDirection="right">
                     <div className="col">
-                        {/* <img src={rsvpImg} alt="rsvp"></img> */}
+                        {images.rsvp.map(buildImage('rsvp'))}
                     </div>
                 </FadeInSection>
             </section>
@@ -39,6 +44,7 @@ export const App: React.FC = observer(() => {
                 <section id="menu">
                     <FadeInSection fadeInDirection="left">
                         <div className="col col--spaced">
+                            {images.menu.map(buildImage('menu', 'menu-img'))}
                             {/* <img
                                 className="menu-img"
                                 src={menu}
@@ -79,6 +85,10 @@ export const App: React.FC = observer(() => {
                         </FadeInSection>
                         <FadeInSection fadeInDirection="right">
                             <div className="col col--spaced">
+                                {images.schedule.map(
+                                    buildImage('schedule', 'menu-img')
+                                )}
+
                                 {/* <img
                                     className="menu-img"
                                     src={schedule1}

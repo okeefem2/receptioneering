@@ -2,10 +2,7 @@ import { createContext } from 'react';
 import { firebaseStore } from '../firebase/firebase.store';
 import { observable, action, computed, reaction } from 'mobx';
 import { collectionChanges, doc } from 'rxfire/firestore';
-import { take } from 'rxjs/operators';
 import { Invitation } from './invitation.model';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
 class InvitationStore {
     private readonly INVITATIONS_COLLECTION = 'invitations';
 
@@ -52,14 +49,12 @@ class InvitationStore {
         const invitationRef = firebaseStore.firestore
             .collection(this.INVITATIONS_COLLECTION)
             .doc(id);
-        doc(invitationRef)
-            .pipe(take(1))
-            .subscribe(snapshot => {
-                this.setInvitation({
-                    ...(snapshot.data() as Invitation),
-                    id: snapshot.id,
-                });
+        doc(invitationRef).subscribe(snapshot => {
+            this.setInvitation({
+                ...(snapshot.data() as Invitation),
+                id: snapshot.id,
             });
+        });
     };
 
     checkInvitation = ({
@@ -111,6 +106,7 @@ class InvitationStore {
     };
 
     @action setInvitation = (invitation: Invitation): void => {
+        console.log('invitation', invitation);
         this.invitation = invitation;
     };
 

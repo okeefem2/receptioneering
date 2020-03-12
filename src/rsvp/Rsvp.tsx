@@ -17,7 +17,11 @@ export const RsvpForm: React.FC = observer(() => {
 
     return (
         <div className="col">
-            <h2>Rsvp Details</h2>
+            <h2>Rsvp</h2>
+            <p>
+                Check out the menu below and let us know if you have any
+                allergies or requests
+            </p>
             <form onSubmit={handleSubmit}>
                 <div className={'radio'}>
                     <input
@@ -39,7 +43,7 @@ export const RsvpForm: React.FC = observer(() => {
                         checked={formValue?.rsvp === 'no'}
                         onChange={handleInputChange}
                     />
-                    <label htmlFor="no">Sorry, not going to make it</label>
+                    <label htmlFor="no">We are not going to make it</label>
                 </div>
                 <div className="input-field">
                     <input
@@ -58,6 +62,15 @@ export const RsvpForm: React.FC = observer(() => {
                     {!invitation?.rsvp ? 'Send' : 'Update'} Response
                 </button>
             </form>
+
+            {invitation?.rsvp && (
+                <p className={'response-message'}>
+                    We received your response and are
+                    {invitation?.rsvp === 'yes'
+                        ? ' excited to see you! Check out the schedule and directions below.'
+                        : ` sorry you can't make it, but hope we can see you sometime soon!`}
+                </p>
+            )}
         </div>
     );
 });
