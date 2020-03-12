@@ -12,7 +12,6 @@ class FirebaseStore {
         firebase.initializeApp(FIREBASE_CONFIG);
         this.firestore = firebase.firestore();
         this.storage = firebase.storage();
-        console.log('init firebase');
     }
 }
 

@@ -22,10 +22,8 @@ class InvitationStore {
             () => this.invitation,
             invitation => {
                 if (!invitation) {
-                    console.log('removing localstorage');
                     window.localStorage.removeItem('invitation');
                 } else {
-                    console.log('setting localstorage', invitation);
                     window.localStorage.setItem(
                         'invitation',
                         JSON.stringify(invitation)
@@ -34,18 +32,15 @@ class InvitationStore {
             }
         );
         const savedInvitation = window.localStorage.getItem('invitation');
-        console.log('from localstorage', savedInvitation);
         if (savedInvitation) {
             const { id } = JSON.parse(savedInvitation);
             if (id) {
-                // fetch from firestore
                 this.fetchInvitation(id);
             }
         }
     }
 
     fetchInvitation = (id: string): void => {
-        console.log('fetching', id);
         const invitationRef = firebaseStore.firestore
             .collection(this.INVITATIONS_COLLECTION)
             .doc(id);
@@ -76,7 +71,6 @@ class InvitationStore {
         // TODO sub teardown
         collectionChanges(invitationsQueryRef).subscribe(
             invitations => {
-                console.log(invitations);
                 if (invitations && invitations.length) {
                     const invitation = invitations[0].doc;
                     this.setInvitation({
@@ -106,7 +100,6 @@ class InvitationStore {
     };
 
     @action setInvitation = (invitation: Invitation): void => {
-        console.log('invitation', invitation);
         this.invitation = invitation;
     };
 

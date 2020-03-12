@@ -7,7 +7,6 @@ import { Invitation } from '../invitation/invitation.model';
 
 export const RsvpForm: React.FC = observer(() => {
     const { invitation, updateInvitation } = useContext(invitationContext);
-    // eslint-disable-next-line
     const [formValue, handleInputChange] = useFormState<Invitation>(invitation);
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
