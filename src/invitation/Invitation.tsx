@@ -12,8 +12,8 @@ export const InvitationForm: React.FC = observer(() => {
     }>({});
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
-        e.preventDefault();
         checkInvitation(formValue);
+        e.preventDefault();
     };
 
     return (
