@@ -3,6 +3,7 @@ import { firebaseStore } from '../firebase/firebase.store';
 import { observable, action, computed, reaction } from 'mobx';
 import { collectionChanges, doc } from 'rxfire/firestore';
 import { Invitation } from './invitation.model';
+import { cleanString } from '../form/cleaning';
 class InvitationStore {
     private readonly INVITATIONS_COLLECTION = 'invitations';
 
@@ -59,6 +60,8 @@ class InvitationStore {
         name?: string;
         email?: string;
     }): void => {
+        name = cleanString(name);
+        email = cleanString(email);
         const invitationsRef = firebaseStore.firestore.collection(
             this.INVITATIONS_COLLECTION
         );
