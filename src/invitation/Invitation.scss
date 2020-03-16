@@ -14,7 +14,7 @@ form {
 }
 
 .input-field {
-    margin: 45px 0;
+    margin: 45px;
     position: relative;
 
     input {
@@ -35,6 +35,10 @@ form {
             outline: none;
         }
 
+        &.full {
+            width: 100%;
+        }
+
         &:focus ~ .input-label,
         &.has-value ~ .input-label {
             color: $color-primary;
@@ -44,14 +48,13 @@ form {
 
         &:focus ~ .bar::before,
         &.has-value ~ .bar::before {
-            width: $form-width;
-            @include respond(phone) {
-                width: $form-width-phone;
-            }
+            width: 100%;
+            // @include respond(phone) {
+            //     width: $form-width-phone;
+            // }
         }
     }
 }
-
 
 .input-label {
     color: $color-text-darker;
@@ -67,10 +70,7 @@ form {
 .bar {
     display: block;
     position: relative;
-    width: $form-width;
-    @include respond(phone) {
-        width: $form-width-phone;
-    }
+    width: 100%;
 
     &::before {
         background: $color-primary;

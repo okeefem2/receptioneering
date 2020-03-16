@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { firebaseStore } from '../firebase/firebase.store';
 import { observable, action, computed, reaction } from 'mobx';
-import { collectionChanges, doc } from 'rxfire/firestore';
+import { doc, collectionData } from 'rxfire/firestore';
 import { Invitation } from './invitation.model';
 import { cleanString } from '../form/cleaning';
 class InvitationStore {
@@ -72,16 +72,15 @@ class InvitationStore {
         );
 
         // TODO sub teardown
-        collectionChanges(invitationsQueryRef).subscribe(
+        collectionData<Invitation>(invitationsQueryRef, 'id').subscribe(
             invitations => {
                 if (invitations && invitations.length) {
-                    const invitation = invitations[0].doc;
-                    this.setInvitation({
-                        ...(invitation.data() as Invitation),
-                        id: invitation.id,
-                    });
+                    const invitation = invitations[0];
+                    this.setInvitation(invitation);
                 } else {
-                    this.setErrorMessage('No invitation found');
+                    this.setErrorMessage(
+                        'No invitation found, please make sure you enter any name as shown on the invitation'
+                    );
                 }
             },
             e => {

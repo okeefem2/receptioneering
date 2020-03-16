@@ -16,7 +16,9 @@ exports.rsvp = functions.firestore
                 to: 'okeefem355@gmail.com',
                 from: 'receptioneering-functions@receptioneering.com',
                 subject: 'Receptioneering Rsvp Updated',
-                text: `${invitees} have updated their rsvp status to ${afterRsvp}${
+                text: `${invitees} have updated their rsvp status for ${
+                    after.guests
+                } guests to ${afterRsvp}${
                     after.note ? `with note ${after.note}` : ''
                 }`,
             };

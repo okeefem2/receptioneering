@@ -14,7 +14,7 @@ export const Location: React.FC = observer(() => {
                     beautiful home of Dan and Mary O&#39;Keefe in Holland
                     Michigan overlooking Lake Michigan. We will have a large
                     tent on site that will accommodate all of us in the event of
-                    weather.
+                    weather. Please dress comfortably in business casual attire.
                 </p>
                 <p>2474 Sunset Bluff Dr, Holland, MI 49424</p>
                 <p>

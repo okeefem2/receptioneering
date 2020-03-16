@@ -4,10 +4,14 @@ import './Rsvp.scss';
 import { invitationContext } from '../invitation/invitation.store';
 import { useFormState } from '../form/form-state';
 import { Invitation } from '../invitation/invitation.model';
+import { FadeInSection } from '../fade-in-section/FadeInSection';
 
 export const RsvpForm: React.FC = observer(() => {
     const { invitation, updateInvitation } = useContext(invitationContext);
-    const [formValue, handleInputChange] = useFormState<Invitation>(invitation);
+    const [formValue, handleInputChange] = useFormState<Invitation>({
+        ...invitation,
+        guests: invitation.guests || invitation.invites,
+    });
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
@@ -44,32 +48,62 @@ export const RsvpForm: React.FC = observer(() => {
                     />
                     <label htmlFor="no">We are not going to make it</label>
                 </div>
+                {formValue?.rsvp === 'yes' && (
+                    <div className="centered">
+                        <FadeInSection fadeInDirection="left" centered={true}>
+                            <div className="input-field">
+                                <input
+                                    id="guests"
+                                    type="number"
+                                    min="1"
+                                    max={invitation?.invites}
+                                    name="guests"
+                                    autoComplete="off"
+                                    className={
+                                        formValue?.guests
+                                            ? 'has-value full'
+                                            : 'full'
+                                    }
+                                    value={formValue?.guests}
+                                    onChange={handleInputChange}
+                                />
+                                <span className="bar"></span>
+                                <label className={'input-label'}>
+                                    # Guests Attending
+                                </label>
+                            </div>
+                        </FadeInSection>
+                    </div>
+                )}
                 <div className="input-field">
                     <input
                         id="notes"
                         type="text"
                         name="notes"
                         autoComplete="off"
-                        className={invitation?.notes ? 'has-value' : ''}
+                        className={
+                            invitation?.notes ? 'has-value full' : 'full'
+                        }
                         value={formValue?.notes}
                         onChange={handleInputChange}
                     />
                     <span className="bar"></span>
                     <label className={'input-label'}>Notes</label>
                 </div>
+                {invitation?.rsvp && (
+                    <FadeInSection fadeInDirection="left" full={true}>
+                        <p className={'response-message'}>
+                            We received your response and are
+                            {invitation?.rsvp === 'yes'
+                                ? ' excited to see you! Check out the schedule and directions below.'
+                                : ` sorry you can't make it, but hope we can see you sometime soon!`}
+                        </p>
+                    </FadeInSection>
+                )}
                 <button type="submit" className="button button--black-text">
                     {!invitation?.rsvp ? 'Send' : 'Update'} Response
                 </button>
             </form>
-
-            {invitation?.rsvp && (
-                <p className={'response-message'}>
-                    We received your response and are
-                    {invitation?.rsvp === 'yes'
-                        ? ' excited to see you! Check out the schedule and directions below.'
-                        : ` sorry you can't make it, but hope we can see you sometime soon!`}
-                </p>
-            )}
         </div>
     );
 });

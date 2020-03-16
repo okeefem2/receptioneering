@@ -61,7 +61,7 @@ export const App: React.FC = observer(() => {
                             <p className="contact">
                                 We are excited to see you there! If you have any
                                 questions or concerns please reach out to us at
-                                okeefem355@gmail or give one of us a call.
+                                okeefem355@gmail.com or give one of us a call.
                             </p>
                         </FadeInSection>
                     </section>

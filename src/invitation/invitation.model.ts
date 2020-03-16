@@ -4,4 +4,6 @@ export interface Invitation {
     emails: string[];
     notes: string;
     rsvp: 'yes' | 'no';
+    guests: number;
+    invites: number;
 }

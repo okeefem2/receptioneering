@@ -16,3 +16,7 @@ firebase login:ci to generate ci token
 caching npm dependencies <https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows>
 
 yarn add rxfire firebase rxjs
+
+Setting environment vars in in functions
+
+firebase functions:config:set sendgrid.key="THE API KEY"

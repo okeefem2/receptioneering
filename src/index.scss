@@ -67,6 +67,13 @@ header {
 
 }
 
+.rsvp-button {
+    display: inline-block;
+    @include respond(phone) {
+        display: none;
+    }
+}
+
 .button {
     background: none;
     border: 2px solid $color-primary;
@@ -114,6 +121,10 @@ header {
     &--full {
         width: 100%;
     }
+
+    &--centered {
+        margin: auto;
+    }
 }
 
 .fade-in-section.is-visible {
@@ -158,4 +169,6 @@ h2 {
 .error {
     color: $color-error;
     margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
 }

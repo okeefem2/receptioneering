@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 import './Invitation.scss';
 import { invitationContext } from './invitation.store';
 import { useFormState } from '../form/form-state';
+import { FadeInSection } from '../fade-in-section/FadeInSection';
 
 export const InvitationForm: React.FC = observer(() => {
     const { checkInvitation, errorMessage } = useContext(invitationContext);
@@ -18,7 +19,7 @@ export const InvitationForm: React.FC = observer(() => {
 
     return (
         <div className="col">
-            <h2>Enter Name On Invitation</h2>
+            <h2>Enter A Name On Your Invitation</h2>
             <form onSubmit={handleSubmit}>
                 <div className="input-field">
                     <input
@@ -46,9 +47,9 @@ export const InvitationForm: React.FC = observer(() => {
                     <label className={'input-label'}>Email</label>
                 </div>
                 {errorMessage && (
-                    <div>
+                    <FadeInSection fadeInDirection="left" full={true}>
                         <p className="error">{errorMessage}</p>
-                    </div>
+                    </FadeInSection>
                 )}
                 <button type="submit" className="button button--black-text">
                     Retrieve Invitation
