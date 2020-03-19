@@ -7,7 +7,12 @@ import { Invitation } from '../invitation/invitation.model';
 import { FadeInSection } from '../fade-in-section/FadeInSection';
 
 export const RsvpForm: React.FC = observer(() => {
-    const { invitation, updateInvitation } = useContext(invitationContext);
+    const {
+        invitation,
+        updateInvitation,
+        errorMessage,
+        responseMessage,
+    } = useContext(invitationContext);
     const [formValue, handleInputChange] = useFormState<Invitation>({
         ...invitation,
         guests: invitation.guests || invitation.invites,
@@ -90,14 +95,14 @@ export const RsvpForm: React.FC = observer(() => {
                     <span className="bar"></span>
                     <label className={'input-label'}>Notes</label>
                 </div>
-                {invitation?.rsvp && (
+                {!errorMessage && responseMessage && (
                     <FadeInSection fadeInDirection="back" full={true}>
-                        <p className={'response-message'}>
-                            We received your response and are
-                            {invitation?.rsvp === 'yes'
-                                ? ' excited to see you! Check out the schedule and directions below.'
-                                : ` sorry you can't make it, but hope we can see you sometime soon!`}
-                        </p>
+                        <p className={'response-message'}>{responseMessage}</p>
+                    </FadeInSection>
+                )}
+                {errorMessage && (
+                    <FadeInSection fadeInDirection="back" full={true}>
+                        <p className="error">{errorMessage}</p>
                     </FadeInSection>
                 )}
                 <button type="submit" className="button button--black-text">

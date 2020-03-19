@@ -7,8 +7,12 @@ service cloud.firestore {
       allow read, write: if isValidInvitation();
     }
 
+    function incomingData() {
+      return request.resource.data;
+    }
+
     function isValidInvitation() {
-      return incomingData().guests > 1 &&
+      return incomingData().guests >= 1 &&
             incomingData().guests <= incomingData().invites &&
             incomingData().rsvp == 'yes' || incomingData().rsvp == 'no'
     }

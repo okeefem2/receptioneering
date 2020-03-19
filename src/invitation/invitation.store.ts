@@ -8,7 +8,8 @@ class InvitationStore {
     private readonly INVITATIONS_COLLECTION = 'invitations';
 
     @observable invitation!: Invitation;
-    @observable errorMessage!: string;
+    @observable responseMessage: string | undefined;
+    @observable errorMessage: string | undefined;
 
     @computed get hasInvitation(): boolean {
         return !!this.invitation;
@@ -29,6 +30,14 @@ class InvitationStore {
                         'invitation',
                         JSON.stringify(invitation)
                     );
+
+                    if (invitation.rsvp) {
+                        const responseMessage = `We received your response and are
+                        ${invitation.rsvp === 'yes'
+                                ? ' excited to see you! Check out the schedule and directions below.'
+                                : ` sorry you can't make it, but hope we can see you sometime soon!`}`
+                        this.setResponseMessage(responseMessage);
+                    }
                 }
             }
         );
@@ -60,6 +69,7 @@ class InvitationStore {
         name?: string;
         email?: string;
     }): void => {
+        this.setErrorMessage(undefined);
         name = cleanString(name);
         email = cleanString(email);
         const invitationsRef = firebaseStore.firestore.collection(
@@ -94,10 +104,18 @@ class InvitationStore {
 
     updateInvitation = (invitation: Partial<Invitation>): void => {
         if (this.invitation) {
+            this.setErrorMessage(undefined);
+            this.setResponseMessage(undefined);
+
             firebaseStore.firestore
                 .collection(this.INVITATIONS_COLLECTION)
                 .doc(this.invitation?.id)
-                .update(invitation);
+                .update(invitation)
+                .catch(() =>
+                    this.setErrorMessage(
+                        'There was an issue, please make sure information added is correct'
+                    )
+                );
         }
     };
 
@@ -105,9 +123,13 @@ class InvitationStore {
         this.invitation = invitation;
     };
 
-    @action setErrorMessage = (message: string): void => {
+    @action setErrorMessage = (message: string | undefined): void => {
         this.errorMessage = message;
     };
+
+    @action setResponseMessage = (message: string | undefined): void => {
+        this.responseMessage = message;
+    }
 }
 
 export const invitationStore = new InvitationStore();
