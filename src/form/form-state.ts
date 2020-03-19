@@ -9,7 +9,14 @@ export function useFormState<T>(
         target,
     }: ChangeEvent<HTMLInputElement>): void => {
         if (target?.name) {
-            setFormValue({ ...formValue, [target.name]: target.value });
+            console.log(target.type);
+            setFormValue({
+                ...formValue,
+                [target.name]:
+                    target?.type === 'number'
+                        ? parseInt(target.value)
+                        : target.value,
+            });
         }
     };
 
