@@ -24,3 +24,7 @@ firebase functions:config:set sendgrid.key="THE API KEY"
 https://logomakr.com/8ZKf0c
 
 https://www.favicon-generator.org/
+
+Securing your google API keys
+
+https://medium.com/@impaachu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843
