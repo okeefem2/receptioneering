@@ -50,7 +50,7 @@ export const RsvpForm: React.FC = observer(() => {
                 </div>
                 {formValue?.rsvp === 'yes' && (
                     <div className="centered">
-                        <FadeInSection fadeInDirection="left" centered={true}>
+                        <FadeInSection fadeInDirection="back" centered={true}>
                             <div className="input-field">
                                 <input
                                     id="guests"
@@ -91,7 +91,7 @@ export const RsvpForm: React.FC = observer(() => {
                     <label className={'input-label'}>Notes</label>
                 </div>
                 {invitation?.rsvp && (
-                    <FadeInSection fadeInDirection="left" full={true}>
+                    <FadeInSection fadeInDirection="back" full={true}>
                         <p className={'response-message'}>
                             We received your response and are
                             {invitation?.rsvp === 'yes'

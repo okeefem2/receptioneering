@@ -10,6 +10,7 @@ import { observer } from 'mobx-react';
 import { invitationContext } from './invitation/invitation.store';
 import RsvpForm from './rsvp/Rsvp';
 import { imageContext } from './image/image.store';
+import MtnLogo from './mtn-logo.png';
 
 export const App: React.FC = observer(() => {
     const { hasInvitation, rsvp } = useContext(invitationContext);
@@ -25,7 +26,7 @@ export const App: React.FC = observer(() => {
                 </FadeInSection>
                 <FadeInSection fadeInDirection="right">
                     <div className="col">
-                        {images.rsvp.map(buildImage('rsvp'))}
+                        {images.rsvp.map(buildImage('rsvp', 'img'))}
                     </div>
                 </FadeInSection>
             </section>
@@ -33,7 +34,9 @@ export const App: React.FC = observer(() => {
                 <section id="menu">
                     <FadeInSection fadeInDirection="left">
                         <div className="col col--spaced">
-                            {images.menu.map(buildImage('menu', 'menu-img'))}
+                            {images.menu.map(
+                                buildImage('menu', 'img menu-img')
+                            )}
                         </div>
                     </FadeInSection>
                     <FadeInSection>
@@ -50,7 +53,7 @@ export const App: React.FC = observer(() => {
                         <FadeInSection fadeInDirection="right">
                             <div className="col col--spaced">
                                 {images.schedule.map(
-                                    buildImage('schedule', 'menu-img')
+                                    buildImage('schedule', 'img menu-img')
                                 )}
                             </div>
                         </FadeInSection>
@@ -65,6 +68,15 @@ export const App: React.FC = observer(() => {
                             </p>
                         </FadeInSection>
                     </section>
+                    <div className="logo-row">
+                        <FadeInSection full={true} fadeInDirection="back">
+                            <img
+                                src={MtnLogo}
+                                alt={'Logo'}
+                                width={'100px'}
+                            ></img>
+                        </FadeInSection>
+                    </div>
                 </>
             )}
         </>

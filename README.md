@@ -20,3 +20,7 @@ yarn add rxfire firebase rxjs
 Setting environment vars in in functions
 
 firebase functions:config:set sendgrid.key="THE API KEY"
+
+https://logomakr.com/8ZKf0c
+
+https://www.favicon-generator.org/

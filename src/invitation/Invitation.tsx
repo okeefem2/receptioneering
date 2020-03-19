@@ -47,7 +47,7 @@ export const InvitationForm: React.FC = observer(() => {
                     <label className={'input-label'}>Email</label>
                 </div>
                 {errorMessage && (
-                    <FadeInSection fadeInDirection="left" full={true}>
+                    <FadeInSection fadeInDirection="back" full={true}>
                         <p className="error">{errorMessage}</p>
                     </FadeInSection>
                 )}

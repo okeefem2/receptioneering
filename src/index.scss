@@ -97,43 +97,6 @@ header {
     }
 }
 
-// https://dev.to/selbekk/how-to-fade-in-content-as-it-scrolls-into-view-10j4
-.fade-in-section {
-    opacity: 0;
-    transform: translateY(20vh);
-    transition: opacity 0.6s ease-out, transform 1.2s ease-out;
-    visibility: hidden;
-    width: 50%;
-    will-change: opacity, visibility;
-
-    @include respond(phone) {
-        width: 100%;
-    }
-
-    &--right {
-        transform: translateX(20vw);
-    }
-
-    &--left {
-        transform: translateX(-20vw);
-    }
-
-    &--full {
-        width: 100%;
-    }
-
-    &--centered {
-        margin: auto;
-    }
-}
-
-.fade-in-section.is-visible {
-    opacity: 1;
-    transform: none;
-    visibility: visible;
-
-}
-
 #root {
     background: $color-background-dark;
     transform: translateZ(0);

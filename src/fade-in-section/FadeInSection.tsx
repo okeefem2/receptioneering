@@ -1,7 +1,9 @@
 import React, { ReactNode } from 'react';
 
+import './FadeInSection.scss';
+
 interface FadeInSectionProps {
-    fadeInDirection?: 'up' | 'down' | 'left' | 'right';
+    fadeInDirection?: 'up' | 'down' | 'left' | 'right' | 'back';
     full?: boolean;
     centered?: boolean;
     children?: ReactNode;
