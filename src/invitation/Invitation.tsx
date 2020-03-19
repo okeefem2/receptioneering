@@ -1,6 +1,5 @@
 import React, { useContext, FormEvent } from 'react';
 import { observer } from 'mobx-react';
-import './Invitation.scss';
 import { invitationContext } from './invitation.store';
 import { useFormState } from '../form/form-state';
 import { FadeInSection } from '../fade-in-section/FadeInSection';
