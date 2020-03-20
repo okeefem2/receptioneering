@@ -33,9 +33,11 @@ class InvitationStore {
 
                     if (invitation.rsvp) {
                         const responseMessage = `We received your response and are
-                        ${invitation.rsvp === 'yes'
+                        ${
+                            invitation.rsvp === 'yes'
                                 ? ' excited to see you! Check out the schedule and directions below.'
-                                : ` sorry you can't make it, but hope we can see you sometime soon!`}`
+                                : ` sorry you can't make it, but hope we can see you sometime soon!`
+                        }`;
                         this.setResponseMessage(responseMessage);
                     }
                 }
@@ -129,7 +131,7 @@ class InvitationStore {
 
     @action setResponseMessage = (message: string | undefined): void => {
         this.responseMessage = message;
-    }
+    };
 }
 
 export const invitationStore = new InvitationStore();
