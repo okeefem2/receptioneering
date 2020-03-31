@@ -17,6 +17,8 @@ firebase login:ci to generate ci token
 
 caching npm dependencies <https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows>
 
+<https://github.com/cypress-io/github-actions-cache/blob/master/examples.md#node---yarn>
+
 yarn add rxfire firebase rxjs
 
 Setting environment vars in in functions
