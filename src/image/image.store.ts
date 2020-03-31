@@ -15,8 +15,7 @@ class ImageStore {
 
     initImages = async (): Promise<void> => {
         for (const section in this.images) {
-            const storageRef = firebaseStore.storage
-                .ref().child(`${section}`);
+            const storageRef = firebaseStore.storage.ref().child(`${section}`);
             const res = await storageRef.listAll();
             res.items.forEach(async itemRef => {
                 const url = await itemRef.getDownloadURL();

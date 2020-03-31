@@ -27,25 +27,22 @@ form {
         &:focus {
             outline: none;
         }
+    }
 
-        &.full {
-            width: 100%;
-        }
+    .full {
+        width: 100%;
+    }
 
-        &:focus ~ .input-label,
-        &.has-value ~ .input-label {
-            color: $color-primary;
-            font-size: 12px;
-            top: -14px;
-        }
+    input:focus ~ .input-label,
+    .has-value ~ .input-label {
+        color: $color-primary;
+        font-size: 12px;
+        top: -14px;
+    }
 
-        &:focus ~ .bar::before,
-        &.has-value ~ .bar::before {
-            width: 100%;
-            // @include respond(phone) {
-            //     width: $form-width-phone;
-            // }
-        }
+    input:focus ~ .bar::before,
+    .has-value ~ .bar::before {
+        width: 100%;
     }
 }
 

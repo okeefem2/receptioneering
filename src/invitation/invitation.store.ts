@@ -83,7 +83,6 @@ class InvitationStore {
             name ? name : email
         );
 
-        // TODO sub teardown
         collectionData<Invitation>(invitationsQueryRef, 'id').subscribe(
             invitations => {
                 if (invitations && invitations.length) {
