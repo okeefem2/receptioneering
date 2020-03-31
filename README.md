@@ -3,6 +3,7 @@
 Michael and Kassidy's Wedding Reception Invitation and RSVP App
 
 ## Resources and Notes
+
 `npx create-react-app my-app --template typescript`
 
 Using typescript template, and adding sass
