@@ -38,6 +38,8 @@ error in CI error Your lockfile needs to be updated, but yarn was run with `--fr
 to fix, I deleted yarn.lock locally, ran yarn install, commented out yarn cache in pr-verify.yml and pushed.
 Then added the caching back in and pushed again when the job succeeded
 
+srsly this yarn thing seems to not know what to do >.<
+
 ## Course outline
 
 Every section use Github projects to track tasks
