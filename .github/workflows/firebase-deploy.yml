@@ -23,7 +23,7 @@ jobs:
     - name: Install yarn
       run: npm i g yarn
     - name: Install dependencies
-      run: yarn install --frozen-lockfile
+      run: yarn install
     - name: Build
       run: yarn build
     - name: Deploy Hosting
