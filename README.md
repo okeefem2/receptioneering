@@ -19,6 +19,8 @@ caching npm dependencies <https://help.github.com/en/actions/configuring-and-man
 
 <https://github.com/cypress-io/github-actions-cache/blob/master/examples.md#node---yarn>
 
+Decided against caching, it added nearly 30 seconds on avg to the build.
+
 yarn add rxfire firebase rxjs
 
 Setting environment vars in in functions
@@ -33,12 +35,6 @@ Securing your google API keys
 
 <https://medium.com/@impaachu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843>
 
-error in CI error Your lockfile needs to be updated, but yarn was run with `--frozen-lockfile`.
-
-to fix, I deleted yarn.lock locally, ran yarn install, commented out yarn cache in pr-verify.yml and pushed.
-Then added the caching back in and pushed again when the job succeeded
-
-srsly this yarn thing seems to not know what to do >.<
 
 ## Course outline
 
