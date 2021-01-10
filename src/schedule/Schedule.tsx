@@ -1,5 +1,4 @@
 import React from 'react';
-import { observer } from 'mobx-react';
 import { ListItem } from '../menu/Menu';
 import { ItemList } from '../menu/MenuItemList';
 
@@ -42,7 +41,7 @@ const schedule: ListItem[] = [
     },
 ];
 
-export const Schedule: React.FC = observer(() => {
+export const Schedule: React.FC = () => {
     return (
         <>
             <div className="col">
@@ -51,6 +50,6 @@ export const Schedule: React.FC = observer(() => {
             <div className="col">{<ItemList listItems={schedule} />}</div>
         </>
     );
-});
+};
 
 export default Schedule;

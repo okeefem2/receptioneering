@@ -20,10 +20,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Install yarn
+      run: npm i g yarn
     - name: Install dependencies
-      run: npm install
+      run: yarn install
     - name: Build
-      run: npm run build
+      run: yarn build
     - name: Deploy Hosting
       run: npx --package firebase-tools firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
     - name: Deploy Firestore Rules

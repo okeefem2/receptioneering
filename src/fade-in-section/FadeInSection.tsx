@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 
 import './FadeInSection.scss';
 
@@ -15,9 +15,10 @@ export const FadeInSection: React.FC<FadeInSectionProps> = ({
     centered = false,
     ...props
 }: FadeInSectionProps) => {
-    const [isVisible, setVisible] = React.useState(false);
-    const domRef = React.useRef<any>();
-    React.useEffect(() => {
+    const [isVisible, setVisible] = useState(false);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const domRef = useRef<any>();
+    useEffect(() => {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => setVisible(entry.isIntersecting));
         });

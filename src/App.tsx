@@ -15,6 +15,7 @@ import MtnLogo from './mtn-logo.png';
 export const App: React.FC = observer(() => {
     const { hasInvitation, rsvp } = useContext(invitationContext);
     const { images } = useContext(imageContext);
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     const buildImage = (section: string, className?: string) => (
         url: string
     ) => <img src={url} alt={section} className={className} key={url}></img>;

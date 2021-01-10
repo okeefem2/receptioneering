@@ -4,6 +4,8 @@ Michael and Kassidy's Wedding Reception Invitation and RSVP App
 
 ## Resources and Notes
 
+`npx create-react-app my-app --template typescript`
+
 Using typescript template, and adding sass
 <https://create-react-app.dev/docs/adding-a-sass-stylesheet/>
 
@@ -14,6 +16,10 @@ Setting up secrets on GH <https://help.github.com/en/actions/configuring-and-man
 firebase login:ci to generate ci token
 
 caching npm dependencies <https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows>
+
+<https://github.com/cypress-io/github-actions-cache/blob/master/examples.md#node---yarn>
+
+Decided against caching, it added nearly 30 seconds on avg to the build.
 
 yarn add rxfire firebase rxjs
 
@@ -28,6 +34,7 @@ firebase functions:config:set sendgrid.key="THE API KEY"
 Securing your google API keys
 
 <https://medium.com/@impaachu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843>
+
 
 ## Course outline
 
